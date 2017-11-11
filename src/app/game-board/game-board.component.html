@@ -1,0 +1,14 @@
+  <table>
+    <ng-container *ngFor="let row of grid; let i =index">
+            <tr>
+              <ng-container *ngFor="let cell of row; let j = index">
+                <td>{{cell.hit}}</td>
+              </ng-container>
+            </tr>
+    </ng-container>
+  </table>
+  <table>
+    <tr>
+      <td></td>
+    </tr>
+  </table>
