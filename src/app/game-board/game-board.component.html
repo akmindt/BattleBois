@@ -1,14 +1,22 @@
-  <table>
-    <ng-container *ngFor="let row of grid; let i =index">
-            <tr>
-              <ng-container *ngFor="let cell of row; let j = index">
-                <td>{{cell.hit}}</td>
-              </ng-container>
-            </tr>
-    </ng-container>
-  </table>
-  <table>
-    <tr>
-      <td></td>
-    </tr>
-  </table>
+<mat-card>
+  <mat-card-content>
+    <h3>Battleship</h3>
+    <table>
+      <ng-container *ngFor="let row of grid; let i =index">
+        <tr>
+          <ng-container *ngFor="let cell of row; let j = index">
+            <td>
+              <button mat-button>{{cell.hit}}</button>
+            </td>
+          </ng-container>
+        </tr>
+      </ng-container>
+    </table>
+    <table>
+      <tr>
+        <td></td>
+      </tr>
+    </table>
+    <h3>Player One's Board</h3>
+  </mat-card-content>
+</mat-card>
