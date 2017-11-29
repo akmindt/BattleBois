@@ -11,17 +11,26 @@ export class Square {
 }
   @Injectable()
   export class SquareService {
-    squares: Square[][];
+    player1: Square[][];
+    player2: Square[][];
 
-    public getSquares(): Square[][] {
-      return this.squares;
+    public getP1Squares(): Square[][] {
+      return this.player1;
     }
+
+    public setP1Squares(newGrid: Square [][]) {
+      this.player1 = newGrid;
+    }
+
     constructor() {
-      this.squares = new Array<Array<Square>>();
+      this.player1 = new Array<Array<Square>>();
+      this.player2 = new Array<Array<Square>>();
       for (let i = 0; i < 10; i++) {
-        this.squares[i] = [];
+        this.player1[i] = [];
+        this.player2[i] = [];
         for (let j = 0; j < 10; j++) {
-          this.squares[i][j] = {hit: 0, hasShip: false, x : i, y : j};
+          this.player1[i][j] = {hit: 0, hasShip: false, x : j, y : i};
+          this.player2[i][j] = {hit: 0, hasShip: false, x : j, y : i};
         }
            } }
 }

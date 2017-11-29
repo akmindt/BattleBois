@@ -1,20 +1,25 @@
 <mat-card>
     <mat-card-content>
+            <button class= "hiddenText" (click)="shipClick('battleship',4)" title="battleship" mat-button id="battleship">battleship</button>
+            <button class= "hiddenText" (click)="shipClick('destroyer',2)" title="destroyer" mat-button id="destroyer">destroyer</button>
+            <button class= "hiddenText" (click)="shipClick('submarine',3)" title="submarine" mat-button id="submarine">sub</button>
+            <button class= "hiddenText" (click)="shipClick('cruiser',3)" title="cruiser" mat-button id="cruiser">cruiser</button>
+            <button class= "hiddenText" (click)="shipClick('aircraft',5)" title="aircraft carrier" mat-button id="aircraft">aircraft</button>
+            <input type="checkbox" id="orientation">
+            <label>Vertical?</label>
       <table>
         <ng-container *ngFor="let row of grid; let i =index">
           <tr>
             <ng-container *ngFor="let cell of row; let j = index">
               <td>
-                <button mat-button>{{cell.hit}}</button>
+                <button class= "hiddenText" (click)="boardClick(cell)"mat-button [ngStyle]="{'background-color': cell.hasShip? 'blue' : 'whitesmoke'}">{{cell.hasShip}}</button>
               </td>
             </ng-container>
           </tr>
         </ng-container>
       </table>
-      <table>
-        <tr>
-          <td></td>
-        </tr>
-      </table>
+      <div id="done">
+        <button (click)="saveShipPlacement()" mat-button >Done</button>
+      </div>
     </mat-card-content>
   </mat-card>

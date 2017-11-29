@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {SquareService, Square} from '../services/square.service';
+import { SquareService, Square } from '../services/square.service';
 
 @Component({
   selector: 'app-game-board',
@@ -7,9 +7,17 @@ import {SquareService, Square} from '../services/square.service';
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent implements OnInit {
-  grid: Square[][];
+  player1: Square[][];
   constructor(private squareService: SquareService) {
-    this.grid = this.squareService.getSquares();
+    this.player1 = this.squareService.getP1Squares();
+  }
+
+  shoot(target: Square) {
+    if (target.hasShip) {
+      target.hit = 1;
+    }else {
+      target.hit = -1;
+    }
   }
 
   ngOnInit() {

@@ -1,3 +1,39 @@
 table{
     margin: auto;
 }
+
+button{
+    background: whitesmoke;
+}
+
+.hiddenText{
+    text-indent: -9999em;
+    text-transform: uppercase; 
+    background: whitesmoke;
+}
+#done{
+    text-align: right;
+}
+button:disabled{
+    background: gray;
+}
+#battleship{
+    background-image: url(../../assets/battleship.png);
+    background-size: 100%;
+}
+#cruiser{
+    background-image: url(../../assets/cruiser.png);
+    background-size: 100%;
+}
+#submarine{
+    background-image: url(../../assets/sub.png);
+    background-size: 100%;
+}
+#aircraft{
+    background-image: url(../../assets/aircraft.png);
+    background-size: 100%;
+}
+#destroyer{
+    background-image: url(../../assets/destroyer.png);
+    background-size: 100%;
+}

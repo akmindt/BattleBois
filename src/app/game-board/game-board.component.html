@@ -2,11 +2,11 @@
   <mat-card-content>
     <h3>Battleship</h3>
     <table>
-      <ng-container *ngFor="let row of grid; let i =index">
+      <ng-container *ngFor="let row of player1; let i =index">
         <tr>
           <ng-container *ngFor="let cell of row; let j = index">
             <td>
-              <button mat-button>{{cell.hit}}</button>
+              <button (click)="shoot(cell)" mat-button>{{cell.hit}}</button>
             </td>
           </ng-container>
         </tr>
