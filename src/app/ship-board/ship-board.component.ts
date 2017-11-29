@@ -11,6 +11,7 @@ export class ShipBoardComponent implements OnInit {
   grid: Square[][];
   shipLength: number;
   shipName: string;
+
   constructor(private squareService: SquareService) {
     this.grid = this.squareService.getP1Squares();
     this.shipLength = 0;
@@ -23,31 +24,29 @@ export class ShipBoardComponent implements OnInit {
   }
 
   boardClick(cell: Square) {
-    const isVertical = <HTMLInputElement> document.getElementById('orientation');
-    
-    if(!this.checkValidPlacement(cell, isVertical.checked)){
+    const isVertical = <HTMLInputElement>document.getElementById('orientation');
+
+    if (!this.checkValidPlacement(cell, isVertical.checked)) {
       return;
     }
 
     for (let i = 0; i < this.shipLength; i++) {
       if (isVertical.checked) {
-        
-        
         this.grid[cell.y + i][cell.x].hasShip = true;
       } else {
-      this.grid[cell.y][cell.x + i].hasShip = true;
+        this.grid[cell.y][cell.x + i].hasShip = true;
       }
       if (this.shipLength - 1 === i) {
-        const element = <HTMLInputElement> document.getElementById(this.shipName);
+        const element = <HTMLInputElement>document.getElementById(this.shipName);
         element.disabled = true;
         this.shipLength = 0;
       }
     }
   }
 
-  checkValidPlacement(cell: Square, isVertical: boolean): boolean{
+  checkValidPlacement(cell: Square, isVertical: boolean): boolean {
     for (let i = 0; i < this.shipLength; i++) {
-      if(isVertical) {
+      if (isVertical) {
         if (this.grid[cell.y + this.shipLength - 1] === undefined) {
           alert('Ship placement out of bounds.');
           return false;
@@ -56,7 +55,7 @@ export class ShipBoardComponent implements OnInit {
           alert('There\'s a ship there already!');
           return false;
         }
-      } else{
+      } else {
         if (this.grid[cell.y][cell.x + this.shipLength - 1] === undefined) {
           alert('Ship placement out of bounds.');
           return false;
@@ -71,7 +70,6 @@ export class ShipBoardComponent implements OnInit {
   }
 
   saveShipPlacement() {
-    this.squareService.setP1Squares(this.grid);
   }
 
   ngOnInit() {
