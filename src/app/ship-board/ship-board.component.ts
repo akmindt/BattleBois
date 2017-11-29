@@ -31,7 +31,7 @@ export class ShipBoardComponent implements OnInit {
           break;
         }
         if (this.grid[cell.y + i][cell.x].hasShip) {
-          alert('Theres a ship there already!');
+          alert('There\'s a ship there already!');
           break;
         }
         this.grid[cell.y + i][cell.x].hasShip = true;
@@ -41,7 +41,7 @@ export class ShipBoardComponent implements OnInit {
           break;
         }
         if (this.grid[cell.y][cell.x + i].hasShip) {
-          alert('Theres a ship there already!');
+          alert('There\'s a ship there already!');
           break;
         }
       this.grid[cell.y][cell.x + i].hasShip = true;
