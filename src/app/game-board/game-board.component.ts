@@ -13,10 +13,16 @@ export class GameBoardComponent implements OnInit {
   }
 
   shoot(target: Square) {
+    const element = <HTMLInputElement> document.getElementById(target.x + ',' + target.y);
+
     if (target.hasShip) {
       target.hit = 1;
+      element.className = "hit mat-button";
+      element.disabled = true;
     }else {
       target.hit = -1;
+      element.className = "miss mat-button";
+      element.disabled = true;
     }
   }
 

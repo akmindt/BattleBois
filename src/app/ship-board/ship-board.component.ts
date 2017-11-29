@@ -48,7 +48,7 @@ export class ShipBoardComponent implements OnInit {
   checkValidPlacement(cell: Square, isVertical: boolean): boolean{
     for (let i = 0; i < this.shipLength; i++) {
       if(isVertical) {
-        if (this.grid[cell.y + this.shipLength] === undefined) {
+        if (this.grid[cell.y + this.shipLength - 1] === undefined) {
           alert('Ship placement out of bounds.');
           return false;
         }
@@ -57,7 +57,7 @@ export class ShipBoardComponent implements OnInit {
           return false;
         }
       } else{
-        if (this.grid[cell.y][cell.x + this.shipLength] === undefined) {
+        if (this.grid[cell.y][cell.x + this.shipLength - 1] === undefined) {
           alert('Ship placement out of bounds.');
           return false;
         }

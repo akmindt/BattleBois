@@ -3,5 +3,22 @@ table{
 }
 
 button{
-    background: whitesmoke;
+    text-indent: -9999em;
+    text-transform: uppercase; 
+    background: skyblue;
+}
+
+.game-board{
+    background-image: url(../../assets/officialbattleshipbackground.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-y: -242px;
+}
+
+.hit{
+    background: red;
+}
+
+.miss{
+    background: white;
 }

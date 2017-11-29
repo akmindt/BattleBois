@@ -1,12 +1,12 @@
-<mat-card>
+<mat-card class='game-board'>
   <mat-card-content>
-    <h3>Battleship</h3>
+    <img src='../../assets/logo.png'>
     <table>
       <ng-container *ngFor="let row of player1; let i =index">
         <tr>
           <ng-container *ngFor="let cell of row; let j = index">
             <td>
-              <button (click)="shoot(cell)" mat-button>{{cell.hit}}</button>
+              <button (click)="shoot(cell)" mat-button id={{j}},{{i}}>{{cell.hit}}</button>
             </td>
           </ng-container>
         </tr>
@@ -14,6 +14,5 @@
     </table>
     <table>
     </table>
-    <h3>Player One's Board</h3>
   </mat-card-content>
 </mat-card>
