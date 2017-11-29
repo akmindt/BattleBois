@@ -24,26 +24,17 @@ export class ShipBoardComponent implements OnInit {
 
   boardClick(cell: Square) {
     const isVertical = <HTMLInputElement> document.getElementById('orientation');
+    
+    if(!this.checkValidPlacement(cell, isVertical.checked)){
+      return;
+    }
+
     for (let i = 0; i < this.shipLength; i++) {
       if (isVertical.checked) {
-        if (this.grid[cell.y + this.shipLength] === undefined) {
-          alert('Ship placement out of bounds.');
-          break;
-        }
-        if (this.grid[cell.y + i][cell.x].hasShip) {
-          alert('There\'s a ship there already!');
-          break;
-        }
+        
+        
         this.grid[cell.y + i][cell.x].hasShip = true;
       } else {
-        if (this.grid[cell.y][cell.x + this.shipLength] === undefined) {
-          alert('Ship placement out of bounds.');
-          break;
-        }
-        if (this.grid[cell.y][cell.x + i].hasShip) {
-          alert('There\'s a ship there already!');
-          break;
-        }
       this.grid[cell.y][cell.x + i].hasShip = true;
       }
       if (this.shipLength - 1 === i) {
@@ -52,6 +43,31 @@ export class ShipBoardComponent implements OnInit {
         this.shipLength = 0;
       }
     }
+  }
+
+  checkValidPlacement(cell: Square, isVertical: boolean): boolean{
+    for (let i = 0; i < this.shipLength; i++) {
+      if(isVertical) {
+        if (this.grid[cell.y + this.shipLength] === undefined) {
+          alert('Ship placement out of bounds.');
+          return false;
+        }
+        if (this.grid[cell.y + i][cell.x].hasShip) {
+          alert('There\'s a ship there already!');
+          return false;
+        }
+      } else{
+        if (this.grid[cell.y][cell.x + this.shipLength] === undefined) {
+          alert('Ship placement out of bounds.');
+          return false;
+        }
+        if (this.grid[cell.y][cell.x + i].hasShip) {
+          alert('There\'s a ship there already!');
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   saveShipPlacement() {
